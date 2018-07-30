@@ -1,0 +1,22 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-6" *ngFor="let item of items">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.name }}</h5>
+          <p class="card-text">{{ item.price }}</p>
+          <p class="card-text">{{ item.info }}</p>
+          <button type="button" class="btn btn-info" (click)="toggleInfoBlock(item.index)">{{ item.infoIsShow ? 'Hide reviews' : 'Show reviews'}}</button>          
+          <div class="info" *ngIf="item.infoIsShow">
+            <div class="col-6" *ngFor="let review of item.review">
+              <h5 class="card-title">{{ review.name }}</h5>
+              <p class="card-text">{{ review.text }}</p>
+            </div> 
+          </div> 
+          <button type="button" class="btn btn-dark" (click)="removeItem(item.index)"> Delete </button>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-info" *ngIf="!items.length">Cписок товаров пуст!</div>
+  </div>
+</div>
